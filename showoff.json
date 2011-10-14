@@ -1,0 +1,11 @@
+{ "name": "Introduction to Ruby", 
+  "sections": 
+    [
+      {"section":"title"},
+      {"section":"about_me"},
+      {"section":"overall_goal"},
+      {"section":"basics"},
+      {"section":"intro_ruby"},
+      {"section":"thanks"}
+    ]
+}

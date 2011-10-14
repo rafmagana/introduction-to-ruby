@@ -1,0 +1,38 @@
+strong.emphasis {
+ 	color: red;
+ }
+
+strong {
+	color: #808000;
+}
+
+em {
+	color: #2554C7;
+	font-style: normal;
+}
+
+h3 {
+  color: #333;
+}
+
+.small {
+  font-size: 0.8em
+}
+
+.supersection {
+  background: #FF3300;
+  padding-top: 250px;
+  color: #fff;
+  height: 100%;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.bullets ul li {
+    text-align: left;
+    line-height:50%;
+}
+
+.smbullets ul li {
+    text-align: left;
+}
