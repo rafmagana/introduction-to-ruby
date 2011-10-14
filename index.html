@@ -1,0 +1,2008 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Introduction to Ruby</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/custom.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="title/slides">
+<h1><strong class="emphasis">Introduction to Ruby</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="about_me/slides/1">
+<h1>Me</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="about_me/slides/2">
+<h1><strong>Rafael Maga&#xF1;a</strong></h1>
+
+<h2>Freelance Rails developer and Sysadmin</h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="about_me/slides/3">
+<h2>Blogging about <em>Ruby</em>, <em>Rails</em> and <em>Git</em> in</h2>
+
+<h2>http://<strong>foo.raflabs.com</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="about_me/slides/4">
+<h2>Publishing open source contributions in</h2>
+
+<h2>http://github.com/<strong>rafmagana</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="about_me/slides/5">
+<h2><strong>raf.magana</strong>@gmail.com</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="about_me/slides/6">
+<h2>@<strong>rafmagana</strong></h2></div>
+</div><div class="slide" data-transition="fade"><div class="content bullets incremental" ref="overall_goal/slides/1">
+<h1><strong>Overall goals</strong></h1>
+
+<ul>
+<li>What kind of language Ruby is</li>
+<li>Implementations</li>
+<li>The Core , the Standard Library and RubyGems</li>
+<li>The language itself (data types, features)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="fade"><div class="content bullets incremental" ref="overall_goal/slides/2">
+<h1><strong>Overall goals</strong></h1>
+
+<ul>
+<li>I</li>
+<li>will not</li>
+<li>teach you</li>
+<li>to program</li>
+<li>in Ruby</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/01_kind_of_language">
+<h1><strong>Kind of language</strong></h1>
+
+<ul>
+<li>General-purpose object-oriented language</li>
+<li>Scripting language</li>
+<li>High level</li>
+<li>Interpreted <span class="small">(not compiled)</span></li>
+<li>Dynamically typed <span class="small">(type a variable can hold can change)</span></li>
+<li>Strongly typed <span class="small">(Operations between types not allowed)</span></li>
+<li>Based on Perl, Smalltalk and Lisp</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/03_interpreters">
+<h1><strong>Implementations</strong></h1>
+
+<ul>
+<li><strong>MRI</strong> <span class="small">(Matz) - Official <em>Ruby 1.8</em>
+interpreter</span></li>
+<li><strong>REE</strong> <span class="small">(Enterprise Edition) - Tweaked <em>Ruby 1.8</em> branch</span></li>
+<li><strong>YARV</strong> <span class="small">(Koichi) - Official <em>Ruby 1.9</em> interpreter</span></li>
+<li><strong>JRuby</strong> <span class="small">(Ruby on the JVM)</span></li>
+<li><strong>Rubinius</strong> <span class="small">(Written in Ruby and C++, JIT)</span></li>
+<li><strong>MacRuby</strong> <span class="small">(Objective-C runtime, Mac OS X)</span></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/1">
+<h1>The <strong>Ruby Core</strong> and <br/><strong>Standard Library</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/04_core_stdlib/2">
+<h1><strong>The Ruby Core</strong></h1>
+
+<ul>
+<li>Base classes and modules</li>
+<li>Don't need to require them manually</li>
+<li>Written in C</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/04_core_stdlib/3">
+<h1><strong>The Ruby Core</strong></h1>
+
+<ul>
+<li>Strings</li>
+<li>Numbers (integers, floats)</li>
+<li>Arrays</li>
+<li>Hashes</li>
+<li>Regular expressions</li>
+<li>Threads</li>
+<li>Times and date</li>
+<li>...and many more</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/04_core_stdlib/4">
+<h1><strong>The Ruby Standard Library</strong> (StdLib)</h1>
+
+<ul>
+<li>Additional packages</li>
+<li>Included in the standard Ruby distribution</li>
+<li>Need a manual require</li>
+<li>Written mostly in Ruby, C or both</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/04_core_stdlib/5">
+<h1><strong>The Ruby Standard Library</strong> (StdLib)</h1>
+
+<ul>
+<li><em>Benchmark</em> <span class="small">(Used time report)</span></li>
+<li><em>OptionParser</em> <span class="small">(Command-line option analysis)</span></li>
+<li><em>Logger</em> <span class="small">(Simple logging mechanism)</span></li>
+<li><em>Net::HTTP</em> <span class="small">(Access WWW docs via HTTP)</span></li>
+<li><em>YAML</em> <span class="small">(human-readable data serialization format)</span></li>
+<li><em>Test::Unit</em> <span class="small">(Unit testing framework)</span></li>
+<li><em>WEBrick</em> <span class="small">(HTTP web server)</span></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/6">
+<pre class="sh_ruby"><code>require 'yaml'
+require 'benchmark'
+require 'logger'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center bullets incremental" ref="basics/04_core_stdlib/7">
+<h1><strong>RubyGems</strong></h1>
+
+<h2>package management framework</h2>
+
+<ul>
+<li><em>APT</em> (apt-get in Debian linux)</li>
+<li><em>PECL</em> and <em>PEAR</em> (PHP)</li>
+<li><em>PyPi</em> (Python)</li>
+<li><em>CPAN</em> (Perl)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="basics/04_core_stdlib/8">
+<h1><strong>Gems</strong></h1>
+
+<ul>
+<li><em>Rake</em> <span class="small">(Build tool)</span></li>
+<li><em>Bundler</em> <span class="small">(Gem dependency management framework)</span></li>
+<li><em>Rails</em> <span class="small">(Web application framework)</span></li>
+<li><em>Unicorn</em> <span class="small">(HTTP server)</span></li>
+<li><em>Capistrano</em> <span class="small">(Web application deployment framework)</span></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/9">
+<pre class="sh_bash"><code>$ gem install rake</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/10">
+<pre class="sh_bash"><code>$ gem install bundler -v 1.0.21</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/11">
+<pre class="sh_bash"><code>$ gem install rails -v 3.1.1</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="basics/04_core_stdlib/12">
+<h1><strong>Core API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core/" target="_blank">http://www.ruby-doc.org/core/</a></p>
+
+<h1><strong>StdLib API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/stdlib/" target="_blank">http://www.ruby-doc.org/stdlib/</a></p>
+
+<h1><strong>RubyGems</strong></h1>
+
+<p><a href="http://www.rubygems.org" target="_blank">http://www.rubygems.org</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content supersection" ref="intro_ruby/01_intro/1">
+<p>The Ruby Language</p>
+
+<p><img src="./file/intro_ruby/../_images/ruby.png" width="250px" alt="Ruby"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/2">
+<h3>Everything is an object</h3>
+
+<h2>Everything is an object</h2>
+
+<h1>Everything is an object</h1>
+
+<h1><strong>Everything is an object</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/3">
+<h1><strong>Object</strong> = state + behavior</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/4">
+<p><img src="./file/intro_ruby/../_images/huracan_casa.jpg" alt="Fried Red Snapper"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullet incremental center" ref="intro_ruby/01_intro/5">
+<p><img src="./file/intro_ruby/../_images/blue_santo.jpg" alt="Red Snapper"/></p>
+
+<ul>
+<li><strong>Object</strong>: A wrestler called Blue Demon</li>
+<li><strong>State</strong>: Its color is blue</li>
+<li><strong>Behavior</strong>: It wrestles</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullet incremental center" ref="intro_ruby/01_intro/6">
+<p><img src="./file/intro_ruby/../_images/blue_santo.jpg" alt="Red Snapper"/></p>
+
+<ul>
+<li><strong>Object</strong>: Instance of a class</li>
+<li><strong>State</strong>: Instance variables</li>
+<li><strong>Behavior</strong>: Methods</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/7">
+<pre class="sh_ruby"><code>object.behavior() # =&gt; It does something</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/8">
+<pre class="sh_ruby"><code>blue_demon.wrestle()</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/9">
+<pre class="sh_ruby"><code>object.state = 'value'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/10">
+<pre class="sh_ruby"><code>blue_demon.color = 'blue'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/11">
+<h2><strong>Functional vs Object-oriented</strong></h2>
+
+<p>PHP</p>
+
+<pre class="sh_php"><code>strlen('string'); // 6</code></pre>
+
+<p>Ruby</p>
+
+<pre class="sh_ruby"><code>'string'.length # =&gt; 6</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/12">
+<h1>Everything evaluates to <em>true</em> except <em>nil</em> or <em>false</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/13">
+<pre class="sh_ruby"><code>zero = 0
+
+puts "It is true" if zero</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/14">
+<pre class="sh_ruby"><code>zero = 0
+
+puts "It is true" if zero
+
+# =&gt; "It is true"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/15">
+<pre class="sh_ruby"><code>empty = ""
+
+puts "It's true" if empty</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/16">
+<pre class="sh_ruby"><code>empty = ""
+
+puts "It's true" if empty
+
+# =&gt; "It is true"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/17">
+<pre class="sh_ruby"><code>false_value = false
+
+puts "It's false" unless false_value</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/18">
+<pre class="sh_ruby"><code>false_value = false
+
+puts "It's false" unless false_value
+
+# =&gt; "It's false"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/19">
+<pre class="sh_ruby"><code>nil_value = nil
+
+puts "It's false" unless nil_value</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/20">
+<pre class="sh_ruby"><code>nil_value = nil
+
+puts "It's false" unless nil_value
+
+# =&gt; "It's false"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/21">
+<pre class="sh_ruby"><code>zero = 0
+
+puts "It's false" unless zero</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/22">
+<pre class="sh_ruby"><code>zero = 0
+
+puts "It's false" unless zero
+
+# =&gt; nil</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/23">
+<h1>Variables are</h1>
+
+<h1><strong>dynamically typed</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/24">
+<pre class="sh_ruby"><code>value = 10
+
+value = "string"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/25">
+<h1>NO PROBLEM</h1>
+
+<pre class="sh_ruby"><code>value = 10
+
+value = "string"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/26">
+<h1>Data are</h1>
+
+<h1><strong>strongly typed</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/01_intro/27">
+<pre class="sh_ruby"><code>"string" + 10
+
+TypeError: Can't convert Fixnum into String</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/28">
+<pre class="sh_ruby"><code>"string" + 10.to_s</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/29">
+<pre class="sh_ruby"><code>"string" + 10.to_s
+
+# =&gt; "string10"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/30">
+<pre class="sh_ruby"><code>10 + "5"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/31">
+<pre class="sh_ruby"><code>10 + "5"
+
+String can't be coerced into Fixnum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/32">
+<pre class="sh_ruby"><code>10 + "5".to_i</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/33">
+<pre class="sh_ruby"><code>10 + "5".to_i
+
+# =&gt; 15</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/34">
+<h1>Every method <em>returns</em></h1>
+
+<h1>the <em>last evaluation</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/35">
+<pre class="sh_ruby"><code>def sum
+    2 + 2
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/36">
+<pre class="sh_ruby"><code>def sum
+    2 + 2
+end
+
+result = sum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/37">
+<pre class="sh_ruby"><code>def sum
+    2 + 2
+end
+
+result = sum
+
+puts result</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/38">
+<pre class="sh_ruby"><code>def sum
+    2 + 2
+end
+
+result = sum
+
+puts result
+
+# =&gt; 4</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/39">
+<pre class="sh_ruby"><code>def question?
+  if true
+      "Yes"
+  else
+      "No"
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/40">
+<pre class="sh_ruby"><code>def question?
+  if true
+      "Yes"
+  else
+      "No"
+  end
+end
+
+result = question?</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/41">
+<pre class="sh_ruby"><code>def question?
+  if true
+      "Yes"
+  else
+      "No"
+  end
+end
+
+result = question?
+
+puts result
+
+# =&gt; "Yes"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/42">
+<h1>Every expression</h1>
+
+<h1>evaluates to an object</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/43">
+<pre class="sh_ruby"><code>result = if true
+            "Yes"
+          else
+            "No"
+          end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/44">
+<pre class="sh_ruby"><code>result = if true
+            "Yes"
+          else
+            "No"
+          end
+
+puts result
+
+# =&gt; "Yes"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/45">
+<h1>Blocks</h1>
+
+<h2>code blocks</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/46">
+<pre class="sh_ruby"><code>do |param1, param2, ..., paramN|
+
+  ...
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/47">
+<pre class="sh_ruby"><code>{ |param, param2, ..., paramN| ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/48">
+<h1>Blocks are nameless functions</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/49">
+<h2><strong>Javascript example</strong></h2>
+
+<pre class="sh_javascript"><code>myFunc = function(param1, param2)
+         {
+
+           ...
+
+         }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/50">
+<h2><strong>Javascript example</strong></h2>
+
+<pre class="sh_javascript"><code>myFunc("arg1", "arg2")</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/51">
+<h2><strong>Javascript example</strong></h2>
+
+<pre class="sh_javascript"><code>function(param1, param2)
+{
+
+  ...
+
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/52">
+<h2><strong>Ruby block example</strong></h2>
+
+<pre class="sh_ruby"><code>{ |arg1, arg2, ..., argN|
+
+  ...
+
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/53">
+<h1>Most common usage for</h1>
+
+<h1><em>blocks</em> is <em>loop abstraction</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/54">
+<pre class="sh_ruby"><code>array.each do |element|
+
+  # do something with the &gt;element&lt;
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/55">
+<h1>By default every method can</h1>
+
+<h1>receive a <em>block as argument</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/56">
+<pre class="sh_ruby"><code>class MyClass
+
+  def my_method
+
+    yield 'param1_value' if block_given?
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/57">
+<pre class="sh_ruby"><code>my_class = MyClass.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/58">
+<pre class="sh_ruby"><code>my_class.my_method do |param1|
+
+  param1
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/59">
+<pre class="sh_ruby"><code>my_class.my_method do |param1|
+
+  param1 # =&gt; 'param1_value'
+
+end
+
+yield 'param_value'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/01_intro/60">
+<h1><em>Exclamation</em> and</h1>
+
+<h1><em>Question mark</em> methods</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/61">
+<h1>By convention</h1>
+
+<h1><em>exclamation mark</em> methods</h1>
+
+<h1><em>replace the object</em></h1>
+
+<h1>they are called on</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/62">
+<pre class="sh_ruby"><code>my_string = "lorem"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/63">
+<pre class="sh_ruby"><code>my_string = "lorem"
+
+my_string.reverse # =&gt; "merol"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/64">
+<pre class="sh_ruby"><code>my_string = "lorem"
+
+my_string.reverse # =&gt; "merol"
+
+my_string # =&gt; "lorem"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/65">
+<pre class="sh_ruby"><code>my_string = "lorem"
+
+my_string.reverse! # =&gt; "merol"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/66">
+<pre class="sh_ruby"><code>my_string = "lorem"
+
+my_string.reverse! # =&gt; "merol"
+
+my_string # =&gt; "merol"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/67">
+<h1>By convention</h1>
+
+<h1><em>question mark</em> methods</h1>
+
+<h1>return <em>true</em> or <em>false</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/68">
+<pre class="sh_ruby"><code>5.zero? # =&gt; false</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/69">
+<pre class="sh_ruby"><code>7.odd? # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/70">
+<pre class="sh_ruby"><code>[1,2,3,4].include? 1 # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/71">
+<pre class="sh_ruby"><code>"Rails".start_with? "P" # =&gt; false</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/72">
+<h1>Parallel assignment</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/73">
+<pre class="sh_ruby"><code>a = 'string'
+
+b = 2</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/74">
+<pre class="sh_ruby"><code>a, b = b, a</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/75">
+<pre class="sh_ruby"><code>a # =&gt; 2
+
+b # =&gt; 'string'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/76">
+<h1>The splat operator</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/77">
+<pre class="sh_ruby"><code>def my_method(*params)
+
+  params
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/78">
+<pre class="sh_ruby"><code>def my_method(*params)
+
+  params
+
+end
+
+my_method 'arg1', 'arg2', 'arg3'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/79">
+<pre class="sh_ruby"><code>def my_method(*params)
+
+  params
+
+end
+
+my_method 'arg1', 'arg2', 'arg3'
+
+# =&gt; ['arg1', 'arg2', 'arg3']</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/80">
+<pre class="sh_ruby"><code>colors = ['red', 'green']</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/81">
+<pre class="sh_ruby"><code>colors = ['red', 'green']
+
+color1, color2 = *colors</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/82">
+<pre class="sh_ruby"><code>colors = ['red', 'green']
+
+color1, color2 = ['red', 'green']</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/83">
+<pre class="sh_ruby"><code>colors = ['red', 'green']
+
+color1, color2 = ['red', 'green']
+
+color1 # =&gt; 'red'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/84">
+<pre class="sh_ruby"><code>colors = ['red', 'green']
+
+color1, color2 = ['red', 'green']
+
+color1 # =&gt; 'red'
+
+color2 # =&gt; 'green'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/85">
+<h1>more on the splat operator</h1>
+
+<h2><a href="http://bit.ly/raflabs_splat" target="_blank"><strong>http://bit.ly/raflabs_splat</strong></a></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/86">
+<h1>Duck Typing</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/87">
+<h1>Implicit vs explicit cast</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/88">
+<h1><strong>Again...</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/89">
+<h1><strong>Everything is an object</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/90">
+<h1><em>Objects are created based on</em> <strong>blueprints</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/91">
+<h1><em>These blueprints are</em> <strong>provided by classes</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/01_intro/92">
+<h1><strong>Every object is an <em>instance</em> of a <em>class</em></strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/02_strings/1">
+<h1>Strings</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/2">
+<pre class="sh_ruby"><code>'lorem'.capitalize # =&gt; 'Lorem'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/3">
+<pre class="sh_ruby"><code>'Ruby on Rails'.include? 'Ruby' # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/4">
+<pre class="sh_ruby"><code>'Ruby on Rails'[8..12] # =&gt; 'Rails'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/5">
+<h2>Strings without interpolation (single quote)</h2>
+
+<pre class="sh_ruby"><code>'my string without interpolation'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/6">
+<h2>Strings with interpolation (double quote)</h2>
+
+<pre class="sh_ruby"><code>var = 'interpolation'
+
+"my string with #{var}"
+
+# =&gt; "my string with interpolation"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/7">
+<h2>Strings with interpolation (double quote)</h2>
+
+<pre class="sh_ruby"><code>"This is year #{2000 + 11}"
+
+# =&gt; "This is year 2011"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/8">
+<pre class="sh_ruby"><code>'Ruby'.class # =&gt; String</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/9">
+<pre class="sh_ruby"><code>language = String.new 'Ruby'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/10">
+<pre class="sh_ruby"><code>language = String.new 'Ruby'
+
+language # =&gt; 'Ruby'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/11">
+<pre class="sh_ruby"><code> String.instance_methods
+
+[:reverse, :capitalize, :upcase, :downcase]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/12">
+<h2><em>String</em> is a class</h2>
+
+<pre class="sh_ruby"><code>'string'.class # =&gt; String</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/13">
+<h2><em>String</em> is an object too, a class object</h2>
+
+<pre class="sh_ruby"><code>String.class # =&gt; Class (instance of...)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/14">
+<pre class="sh_ruby"><code>String = Class.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/15">
+<pre class="sh_ruby"><code>Class.instance_methods
+
+# =&gt; [:new, :class, :superclass, ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/16">
+<pre class="sh_ruby"><code>class Class &lt; Object
+
+  ...
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/02_strings/17">
+<h1><strong>Class class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Class.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/Class.html</a></p>
+
+<h1><strong>String class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/String.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/String.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/03_numbers/1">
+<h1>Numbers</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/2">
+<pre class="sh_ruby"><code>1.odd? # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/3">
+<pre class="sh_ruby"><code>1.even? # =&gt; false</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/4">
+<pre class="sh_ruby"><code>1.next # =&gt; 2</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/5">
+<pre class="sh_ruby"><code>1.next.next # =&gt; 3</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/6">
+<pre class="sh_ruby"><code>  1 + 9 # =&gt; 10</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/7">
+<pre class="sh_ruby"><code>  1.+ 9 # =&gt; 10</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/8">
+<h2><strong>There are no operators in Ruby</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/03_numbers/9">
+<h1><strong>Operators are methods!</strong></h1>
+
+<p><img src="./file/intro_ruby/../_images/surprised_baby.jpg" alt="Amazed"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/10">
+<pre class="sh_ruby"><code>1.class # =&gt; Fixnum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/11">
+<pre class="sh_ruby"><code>Fixnum.instance_methods
+
+# =&gt; [:*, :+, :-, :/, :**,...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/12">
+<pre class="sh_ruby"><code>0.0025.class # =&gt; Float</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/13">
+<pre class="sh_ruby"><code>Float.instance_methods
+
+# =&gt; [:*, :+, :-, :/, :**,...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/14">
+<h1>Type conversions</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/15">
+<pre class="sh_ruby"><code>2.5.to_i # =&gt; 2</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/16">
+<pre class="sh_ruby"><code>2.5.to_i # =&gt; 2
+
+2.5.to_i.class # =&gt; Fixnum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/17">
+<pre class="sh_ruby"><code>2.to_f # =&gt; 2.0</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/18">
+<pre class="sh_ruby"><code>2.to_f # =&gt; 2.0
+
+2.to_f.class # =&gt; Float</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/03_numbers/19">
+<h1><strong>Fixnum class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Fixnum.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/Fixnum.html</a></p>
+
+<h1><strong>Float class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Float.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/Float.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/04_ranges/1">
+<h1>Ranges</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro_ruby/04_ranges/2">
+<h1>Ranges</h1>
+
+<ul>
+<li>Represents an interval</li>
+<li>A set of values with a <strong>start</strong> and an <strong>end</strong></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/3">
+<pre class="sh_ruby"><code>1..10</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/4">
+<pre class="sh_ruby"><code>(1..10).to_a 
+
+# =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/5">
+<pre class="sh_ruby"><code>1...10</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/6">
+<pre class="sh_ruby"><code>(1...10).to_a 
+
+# =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/7">
+<pre class="sh_ruby"><code>'a'..'e'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/8">
+<pre class="sh_ruby"><code>('a'..'e').to_a
+
+# =&gt; ["a", "b", "c", "d", "e"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/9">
+<pre class="sh_ruby"><code>('a'..'e').include? 'c' # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/10">
+<pre class="sh_ruby"><code>rate = 45
+
+case rate
+  when 0...10   then "Lowest rate"
+  when 10...50  then "Low rate"
+  when 50...90  then "High rate"
+  when 90...100 then "Highest rate"
+end
+
+# =&gt; "Low rate"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/11">
+<pre class="sh_ruby"><code>(0...10).class # =&gt; Range</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/12">
+<pre class="sh_ruby"><code>Range.instance_methods
+
+[:first, :last, :include?, :step, ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/04_ranges/13">
+<h1><strong>Range class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Range.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/Range.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/05_symbols/1">
+<h1>Symbols</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/2">
+<h2>Duplicated objects</h2>
+
+<pre class="sh_ruby"><code>
+"ruby".object_id # =&gt; 2156749500
+
+"ruby".object_id # =&gt; 2156743120</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/3">
+<h2>Avoiding object duplication</h2>
+
+<pre class="sh_ruby"><code>
+:ruby.object_id # =&gt; 399368
+
+:ruby.object_id # =&gt; 399368</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center small" ref="intro_ruby/05_symbols/4">
+<h1>A <em>symbol</em> can return the</h1>
+
+<h1><em>string representation</em> of its name</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/5">
+<pre class="sh_ruby"><code>
+:ruby.to_s # =&gt; "ruby"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/6">
+<pre class="sh_ruby"><code>
+:"ruby on rails".to_s # =&gt; "ruby on rails"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/7">
+<pre class="sh_ruby"><code>:ruby.class # =&gt; Symbol</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/8">
+<h1>Important fact</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/05_symbols/9">
+<h1>There is one <strong>symbol</strong></h1>
+
+<h1>for <strong>every method name</strong></h1>
+
+<h1>(:to_i, :to_s, :object_id, etc.)</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/06_arrays/1">
+<h1>Arrays</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="intro_ruby/06_arrays/2">
+<h1><strong>Arrays</strong></h1>
+
+<h2><em>Ordered, integer-indexed collections of any object</em></h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/06_arrays/3">
+<pre class="sh_ruby"><code>colors = ["cyan", "magenta", "yellow", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/4">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/5">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+# =&gt; ["cyan", "magenta", "yellow", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/6">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[0] # =&gt; "cyan"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/7">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors.first # = &gt; "cyan"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/8">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[1,2] # =&gt; ["magenta", "yellow"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/9">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[-1] # =&gt; "black"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/10">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors.last # =&gt; "black"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/11">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[1..2] # =&gt; ["magenta", "yellow"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/12">
+<pre class="sh_ruby"><code>colors = %w(cyan magenta yellow black)
+
+colors[2..-1] # =&gt; ["yellow", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/13">
+<pre class="sh_ruby"><code>colors = %w[cyan magenta yellow black]
+
+colors[2...-1] # =&gt; ["yellow"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/14">
+<pre class="sh_ruby"><code>colors.class # =&gt; Array</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/15">
+<pre class="sh_ruby"><code>Array.instance_methods
+
+[:[], :[]=, :*, :+, :-, :&lt;&lt;, :each, ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/16">
+<h2>Square brackets are methods, nothing more!</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/17">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[1..2] # =&gt; "black"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/18">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors.[](1..2) # =&gt; "black"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/19">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors[1] = 'white'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/20">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors.[]=(1, 'white')</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/21">
+<pre class="sh_ruby"><code>colors = %w/cyan magenta yellow black/
+
+colors.[]=(1, 'white')
+
+["cyan", "white", "yellow", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/22">
+<pre class="sh_ruby"><code>cmyk = %w(cyan magenta yellow black)
+
+rgb = %w{red green black}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/23">
+<pre class="sh_ruby"><code>rgb * 2
+
+["red", "green", "black",
+ "red", "green", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/24">
+<pre class="sh_ruby"><code>rgb_and_cmyk = rgb + cmyk
+
+["red", "green", "black", 
+ "cyan", "magenta", "yellow", "black"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/25">
+<pre class="sh_ruby"><code>rgb_and_cmyk.uniq
+
+["red", "green", "black", 
+ "cyan", "magenta", "yellow"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/26">
+<pre class="sh_ruby"><code>http = %w{hyper text transfer protocol}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/27">
+<pre class="sh_ruby"><code>http = %w{hyper text transfer protocol}
+
+http.collect { |w| w[0].capitalize }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/28">
+<pre class="sh_ruby"><code>http = %w{hyper text transfer protocol}
+
+http.collect { |w| w[0].capitalize }
+
+# =&gt; ["H", "T", "T", "P"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/29">
+<pre class="sh_ruby"><code>http = %w{hyper text transfer protocol}
+
+http.collect { |w| w[0].capitalize }.join
+
+# =&gt; "HTTP"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/30">
+<pre class="sh_ruby"><code>known_people = %w{marie hellen yen}
+
+excluded = %w{yen}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/31">
+<pre class="sh_ruby"><code>invitees = known_people - excluded
+
+# =&gt; ["marie", "hellen"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/32">
+<pre class="sh_ruby"><code>invitees &lt;&lt; "alejandra"
+
+# =&gt; ["marie", "hellen", "alejandra"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/33">
+<pre class="sh_ruby"><code>
+invitees.each do |friend|
+
+   friend.invite()
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/34">
+<pre class="sh_ruby"><code>
+invitees.each { |f| f.invite }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/06_arrays/35">
+<h1><strong>Array class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Array.html">http://www.ruby-doc.org/core-1.9.2/Array.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/07_hashes/1">
+<h1>Hashes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro_ruby/07_hashes/2">
+<h1>Hashes</h1>
+
+<ul>
+<li>key-based</li>
+<li>dictionaries, maps</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/3">
+<pre class="sh_ruby"><code>ages = {"marie" =&gt; 17, :hellen =&gt; 20}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/4">
+<pre class="sh_ruby"><code>ages = Hash[:marie, 17, :hellen, 20]
+
+# =&gt; {:marie =&gt; 17, :hellen =&gt; 20}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/5">
+<pre class="sh_ruby"><code>ages[:marie] # =&gt; 17</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/6">
+<h2>Creating empty hashes</h2>
+
+<pre class="sh_ruby"><code>
+languages = {}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/7">
+<pre class="sh_ruby"><code>
+languages[:compiled] = %w{Java Smalltalk}
+
+
+languages[:interpreted] = %w{Perl Ruby}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/8">
+<pre class="sh_ruby"><code>languages[:compiled]
+
+# =&gt;  ["Java", "Smalltalk"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/9">
+<pre class="sh_ruby"><code>languages[:interpreted]
+
+# =&gt; ["Perl", "Ruby"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/10">
+<h1>Hashes can be used as keyword arguments</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/11">
+<pre class="sh_ruby"><code>def my_method(params = {})
+
+  params[:key1]
+
+  params[:key2]
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/12">
+<pre class="sh_ruby"><code>my_method({:key1 =&gt; :value1, :key2 =&gt; []})</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/13">
+<pre class="sh_ruby"><code>my_method :key1 =&gt; :value1, :key2 =&gt; []</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/14">
+<h1>You can use <em>any object as key</em>, <br/>not only strings or symbols</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/15">
+<pre class="sh_ruby"><code>
+foo = [1, 2, 3]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/16">
+<pre class="sh_ruby"><code>foo = [1, 2, 3]
+
+bar = Hash[foo, :lorem]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/17">
+<pre class="sh_ruby"><code>foo = [1, 2, 3]
+
+bar = Hash[foo, :lorem]
+
+# =&gt; {[1, 2, 3]=&gt;:lorem}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/18">
+<pre class="sh_ruby"><code>bar[foo] # =&gt; :lorem</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/19">
+<pre class="sh_ruby"><code>bar[foo] # =&gt; :lorem</code></pre>
+
+<p>NOTE: Make sure you read about the <em>Hash</em>#rehash method</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/20">
+<pre class="sh_ruby"><code>bar.class # =&gt; Hash</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/21">
+<pre class="sh_ruby"><code>Hash.instance_methods
+
+["[]", "[]=", "has_key?", "each", ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/07_hashes/22">
+<h1><strong>Hash class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Hash.html" target="_blank">http://www.ruby-doc.org/core-1.9.2/Hash.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/08_regexp/1">
+<h1>Regular Expressions</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/2">
+<pre class="sh_ruby"><code>text = &lt;&lt;MESSAGE
+  Hey dude, here is my alternative
+  email address: john@doe.com
+MESSAGE</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/08_regexp/3">
+<pre class="sh_ruby"><code>pattern = /(?&lt;name&gt;([\w-]+))@[\w-]+\.+[\w-]+/</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/08_regexp/4">
+<pre class="sh_ruby"><code>text = &lt;&lt;MESSAGE
+  Hey dude, here is my alternative
+  email address: john@doe.com
+MESSAGE
+
+matches = pattern.match text</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/08_regexp/5">
+<pre class="sh_ruby"><code>text = &lt;&lt;MESSAGE
+  Hey dude, here is my alternative
+  email address: john@doe.com
+MESSAGE
+
+matches = pattern.match text
+
+# =&gt; #&lt;MatchData "john@doe.com" name:"john"&gt;</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/6">
+<pre class="sh_ruby"><code>matches[:name] # =&gt; "john"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/7">
+<pre class="sh_ruby"><code>text = &lt;&lt;MESSAGE
+  Hey dude, here is my alternative
+  email address: john@doe.com
+MESSAGE
+
+pattern = /([\w-]+)@[\w-]+\.+[\w-]+/</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/8">
+<pre class="sh_ruby"><code>text.scan pattern
+
+# =&gt; [["john"]]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/9">
+<pre class="sh_ruby"><code>text.scan(pattern).flatten
+
+# =&gt; ["john"]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/10">
+<pre class="sh_ruby"><code>text.scan(pattern).flatten.first
+
+# =&gt; "john"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/11">
+<pre class="sh_ruby"><code>/pattern/.class # =&gt; Regexp</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/08_regexp/12">
+<h1><strong>Regexp class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/Regexp.html">http://www.ruby-doc.org/core-1.9.2/Regexp.html</a></p>
+
+<h1><strong>MatchData class API</strong></h1>
+
+<p><a href="http://www.ruby-doc.org/core-1.9.2/MatchData.html">http://www.ruby-doc.org/core-1.9.2/MatchData.html</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/09_nil_true_false/1">
+<h1>nil, true, false</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro_ruby/09_nil_true_false/2">
+<ul>
+<li><strong>nil</strong> evaluates to <strong>false</strong></li>
+<li><strong>false</strong> evaluates to <strong>false</strong></li>
+<li><strong>true</strong> and everything else evaluates to <strong>true</strong></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/3">
+<h1><strong>nil</strong> represents nullity, nothing</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/4">
+<h1>and again, remember...</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/5">
+<h1><strong>Everything is an object</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/6">
+<h1>yes, <strong>nil</strong> is an object</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/7">
+<pre class="sh_ruby"><code>nil.class # =&gt; NilClass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/8">
+<pre class="sh_ruby"><code>my_object = nil
+
+my_object.nil? # =&gt; true</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/9">
+<pre class="sh_ruby"><code>foo = nil</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/10">
+<pre class="sh_ruby"><code>foo = nil
+
+puts "nil evaluates to false" unless foo</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/11">
+<pre class="sh_ruby"><code>foo = nil
+
+puts "nil evaluates to false" unless foo
+
+# =&gt; "nil evaluates to false"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/12">
+<h1>yes, <strong>true</strong> is an object</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/13">
+<pre class="sh_ruby"><code>true.class # =&gt; TrueClass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/14">
+<h1>and, yes, <strong>false</strong> is an object too</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/15">
+<pre class="sh_ruby"><code>false.class # =&gt; FalseClass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/16">
+<h2><em>NilClass</em>, <em>FalseClass</em> and <em>TrueClass</em></h2>
+
+<h2>are singleton classes</h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/17">
+<h2><em>NilClass</em>, <em>FalseClass</em> and <em>TrueClass</em></h2>
+
+<h2>are singleton classes</h2>
+
+<h2><strong>cannot be instantiated more than once</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/09_nil_true_false/18">
+<h1><em>nil</em>, <em>false</em> and <em>true</em></h1>
+
+<h1>are the unique instances of</h1>
+
+<h1>its parent classes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/09_nil_true_false/19">
+<pre class="sh_ruby"><code>my_nil = NilClass.new 
+
+# =&gt; undefined method `new'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/10_data_types/1">
+<h1>Basic Datatypes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/10_data_types/2">
+<h1>Basic Datatypes (classes)</h1>
+
+<pre class="sh_ruby"><code>
+Class
+
+String
+
+Numeric
+
+Symbol
+
+Range
+
+Array
+
+Hash
+
+Regexp
+
+TrueClass, FalseClass and NilClass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content supersection" ref="intro_ruby/11_classes/1">
+<h1>Class objects</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/11_classes/2">
+<h1>Class and instance methods</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/11_classes/3">
+<pre class="sh_ruby"><code>
+Animal = Class.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/4">
+<pre class="sh_ruby"><code>class Animal
+
+  def initilize
+    #executed when Animal.new is called
+  end
+
+  def instance_method
+    'instance_method'
+  end
+
+  def Animal.class_method
+    'class_method'
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/5">
+<pre class="sh_ruby"><code>cat = Animal.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/6">
+<pre class="sh_ruby"><code>
+cat.instance_method # =&gt; 'instance_method'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/7">
+<pre class="sh_ruby"><code>
+cat.class_method # =&gt; undefined</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/8">
+<pre class="sh_ruby"><code>Animal.class_method
+
+# =&gt; 'class_method'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/9">
+<pre class="sh_ruby"><code>
+Animal.instance_method # =&gt; undefined</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/11_classes/10">
+<h1>Class, instance and <br/>class instance variables</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/11">
+<h1>Class variables</h1>
+
+<h2>Available to whole inheritance tree</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/12">
+<pre class="sh_ruby"><code>class Animal
+  @@class_variable = :foo
+
+  def instance_method
+    @@class_variable
+  end
+
+  def Animal.class_method
+    @@class_variable
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/13">
+<pre class="sh_ruby"><code>
+Animal.new.instance_method # =&gt; :foo</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/14">
+<pre class="sh_ruby"><code>
+Animal.class_method # =&gt; :foo</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/15">
+<h1>Instance variables</h1>
+
+<h2>Available only to a specific instance of the class</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/16">
+<pre class="sh_ruby"><code>class Animal
+
+  def initilize(value)
+    @instance_variable = value
+  end
+
+  def instance_method
+    @instance_variable
+  end
+
+  def Animal.class_method
+    @instance_variable
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/17">
+<pre class="sh_ruby"><code>Animal.new(:foo).instance_method # =&gt; :foo</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/18">
+<pre class="sh_ruby"><code>Animal.class_method # =&gt; nil
+
+@instance_variable not initialized</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/19">
+<h1>Class instance variables</h1>
+
+<h2>Look like instance variables</h2>
+
+<h2>Private to the class</h2>
+
+<h2>Unavailable to the inheritance tree</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/20">
+<pre class="sh_ruby"><code>class Animal
+  @class_instance_variable = :foo
+
+  def instance_method
+    @class_instance_variable
+  end
+
+  def Animal.class_method
+    @class_instance_variable
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/21">
+<pre class="sh_ruby"><code>Animal.new.instance_method # =&gt; nil
+
+@class_instance_variable not initialized</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/22">
+<pre class="sh_ruby"><code>Animal.class_method # =&gt; :foo</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro_ruby/11_classes/23">
+<pre class="sh_ruby"><code>class Animal
+
+  @@class_variable = :foo
+  @class_instance_variable = :bar
+
+  def initialize
+    @instance_variable = :baz
+    @@class_variable # =&gt; :foo
+  end
+
+  def instance_method
+    @instance_variable # =&gt; :baz
+  end
+
+  def self.class_method
+    @class_instance_variable # =&gt; :bar
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/11_classes/24">
+<h1>Accessors (setters/getters)</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/25">
+<h1>In Ruby we don't access variables directly</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/26">
+<pre class="sh_ruby"><code>
+class Foo
+
+  def initialize
+
+    @bar = 'lorem'
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/27">
+<pre class="sh_ruby"><code>foo = Foo.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/28">
+<pre class="sh_ruby"><code>foo.@bar
+
+# =&gt; syntax error, unexpected tIVAR</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/29">
+<pre class="sh_ruby"><code>foo.bar
+
+# =&gt; undefined method 'bar'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/30">
+<h1>Ruby is telling us something very important here...</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/31">
+<h1>The thing after the dot must be <strong>always</strong> a method</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/32">
+<h1>We need to create methods to access variables</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/33">
+<pre class="sh_ruby"><code>class Animal
+
+  def initialize
+    @name = ''
+  end
+
+  def name
+    @name
+  end
+
+  def name=(value)
+    @name = value
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/34">
+<h1>A shorter version</h1>
+
+<pre class="sh_ruby"><code>class Animal
+  attr_accessor :name
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/35">
+<pre class="sh_ruby"><code>dog = Animal.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/36">
+<pre class="sh_ruby"><code>dog.name = 'terry'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/37">
+<pre class="sh_ruby"><code>dog.name # =&gt; "terry"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/38">
+<h2>We are not accessing the <strong>@name</strong> variable directly <br/>we do it through a method called <em>name</em></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/39">
+<h2>In OOP that is called <strong>Encapsulation</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/40">
+<h2>Only the object itself can change its <strong>state</strong></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/41">
+<pre class="sh_ruby"><code>class Animal
+
+  attr_accessor :name, :color
+
+  attr_writer :dob
+
+  attr_reader :number_of_feet
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/11_classes/42">
+<h1>Method visibility</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/43">
+<pre class="sh_ruby"><code>class BaseDummy
+
+  public
+  def public_method
+    'public'
+  end
+
+  private
+  def private_method
+    'private'
+  end
+
+  protected
+  def protected_method
+    'protected'
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/44">
+<pre class="sh_ruby"><code>base_dummy = BaseDummy.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/45">
+<pre class="sh_ruby"><code>base_dummy.public_method # =&gt; 'public'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/46">
+<pre class="sh_ruby"><code>base_dummy.private_method
+
+# =&gt; Error</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/47">
+<pre class="sh_ruby"><code>base_dummy.protected_method
+
+# =&gt; Error</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/48">
+<pre class="sh_ruby"><code>class Dummy &lt; BaseDummy
+
+  def crash!
+    protected_method
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/49">
+<pre class="sh_ruby"><code>dummy = Dummy.new</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/50">
+<pre class="sh_ruby"><code>dummy.private_method
+
+# =&gt; Error</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/51">
+<pre class="sh_ruby"><code>dummy.crash! # =&gt; 'protected'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/11_classes/52">
+<h1>Scope</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/53">
+<h1>Introducing <strong>self</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/54">
+<h1>A <strong>reference</strong> to the current receiver</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/55">
+<h2>We send a <em>message</em>(method) to a <em>reveiver</em></h2>
+
+<pre class="sh_ruby"><code>receiver.message</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/56">
+<h1>If we omit the receiver, <br/>it defaults to <strong>self</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/57">
+<pre class="sh_ruby"><code>def top_level_method
+  'hey'
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/58">
+<pre class="sh_ruby"><code>top_level_method # =&gt; "hey"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/59">
+<pre class="sh_ruby"><code>self.top_level_method # =&gt; "hey"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/60">
+<pre class="sh_ruby"><code>self # =&gt; main</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/61">
+<pre class="sh_ruby"><code>self.class # =&gt; Object</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/62">
+<h1>The <strong>top level</strong> is an object</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/63">
+<pre class="sh_ruby"><code>self # =&gt; main
+
+class SelfStudy
+
+  self # =&gt; SelfStudy
+
+end
+
+self # =&gt; main</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/64">
+<pre class="sh_ruby"><code>
+class SelfStudy
+
+  def instance_method
+
+    self # =&gt; #&lt;SelfStudy:0x1011b3ad0&gt;
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/65">
+<pre class="sh_ruby"><code>
+class SelfStudy
+
+  def self.class_method
+
+    self # =&gt; SelfStudy
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/66">
+<h1>Remeber this</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/11_classes/67">
+<h1><strong>self</strong> is not <strong>this</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/12_methods/1">
+<h1>Sharing behavior</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/2">
+<h1>1. Inheritance</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/3">
+<pre class="sh_ruby"><code>class Animal
+
+  def walk
+    ...
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/4">
+<pre class="sh_ruby"><code>class Animal &lt; Object
+
+  def walk
+    ...
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/5">
+<pre class="sh_ruby"><code>class Dog &lt; Animal
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/6">
+<pre class="sh_ruby"><code>keiser = Dog.new
+
+keiser.walk</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/7">
+<h1>Animals and People can walk, let's share that behavior</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/8">
+<h1>2. Mix-ins</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/9">
+<pre class="sh_ruby"><code>module Walker
+
+  def walk
+    'walking...'
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/10">
+<pre class="sh_ruby"><code>
+Walker.class # =&gt; Module</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/11">
+<h1><strong>Modules</strong> are objects too</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/12">
+<h2>Bringing module methods as instance methods</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/13">
+<pre class="sh_ruby"><code>
+class Animal
+
+  include Walker
+
+end
+
+class Person
+
+  include Walker
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/14">
+<pre class="sh_ruby"><code>Animal.new.walk # =&gt; 'walking...'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/15">
+<pre class="sh_ruby"><code>Person.new.walk # =&gt; 'walking...'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/16">
+<h2>Bringing module methods as class methods</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/17">
+<pre class="sh_ruby"><code>
+class Animal
+
+  extend Walker
+
+end
+
+class Person
+
+  extend Walker
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/18">
+<pre class="sh_ruby"><code>Animal.walk # =&gt; 'walking...'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/19">
+<pre class="sh_ruby"><code>Person.walk # =&gt; 'walking...'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro_ruby/12_methods/20">
+<h1>Classes can be re-opened</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/21">
+<pre class="sh_ruby"><code>"ruby".decorate # =&gt; undefined method</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/22">
+<pre class="sh_ruby"><code>class String
+
+  def decorate
+
+    "**_ #{self} _**"
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/23">
+<pre class="sh_ruby"><code>"ruby".decorate
+
+# =&gt; "**_ ruby _**"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/24">
+<pre class="sh_ruby"><code>1000.decorate
+
+# =&gt; undefined method 'decorate'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/25">
+<pre class="sh_ruby"><code>class Object
+
+  def decorate
+
+    "**_ #{self} _**"
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/26">
+<pre class="sh_ruby"><code>"ruby".decorate
+
+# =&gt; "**_ ruby _**"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/27">
+<pre class="sh_ruby"><code>1000.decorate
+
+# =&gt; "**_ 1000 _**"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/28">
+<pre class="sh_ruby"><code>:post.decorate
+
+# =&gt;  "**_ post _**"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/29">
+<pre class="sh_ruby"><code>%w/ruby on rails/.decorate
+
+# =&gt; "**_ ["ruby", "on", "rails"] _**"</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/30">
+<h1>Using <em>mix-ins</em> to add features to certain classes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/31">
+<pre class="sh_ruby"><code>module Decorable
+
+  def decorate
+
+    "**_ #{self} _**"
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/32">
+<pre class="sh_ruby"><code>class String
+
+  include Decorable
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/33">
+<pre class="sh_ruby"><code>class Fixnum
+
+  include Decorable
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/12_methods/34">
+<pre class="sh_ruby"><code>class ClassOnSteroids
+
+  include TextUtil, Loggeable, MyHelper
+
+  extend Configurable, Loggeable
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content supersection" ref="intro_ruby/13_closures/1">
+<h1>Closures</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/2">
+<h1>Do you remember</h1>
+
+<h1>what blocks are?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/3">
+<h1><strong>Blocks are</strong></h1>
+
+<h1><em>nameless</em> <strong>functions</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/4">
+<pre class="sh_ruby"><code>do |param1, param2|
+
+  # code here
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/5">
+<pre class="sh_ruby"><code>def name(param1, param2)
+
+  # code here
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/6">
+<pre class="sh_ruby"><code>def (param1, param2)
+
+  # code here
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/7">
+<h1><strong>Almost</strong></h1>
+
+<h1><em>Everything is an object</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/8">
+<h1><em>Blocks are</em> <strong>not</strong> <em>objects</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content center small" ref="intro_ruby/13_closures/9">
+<h1><strong>A block become an object</strong></h1>
+
+<h1><em>when we bound it to a variable</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/10">
+<pre class="sh_ruby"><code>my_object = { |params| ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/11">
+<pre class="sh_ruby"><code>my_object = { |params| ... }
+
+# =&gt; Syntax error</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/12">
+<h1>How do we create</h1>
+
+<h1>closures out of blocks?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/13">
+<pre class="sh_ruby"><code>closure = Proc.new { |params|  ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/14">
+<pre class="sh_ruby"><code>closure = Proc.new { |params|  ... }
+
+closure.call 'arg'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/15">
+<pre class="sh_ruby"><code>closure = Proc.new { |param|  ... }
+
+closure.call 'arg'
+
+# =&gt; result of executing ...</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/16">
+<h1><strong>Blocks are</strong></h1>
+
+<h1><em>nameless</em> <strong>functions</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/17">
+<h1><strong>Closures are</strong></h1>
+
+<h1><strong>nameless function</strong> <em>objects</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/18">
+<pre class="sh_ruby"><code>closure = Proc.new { |params|  ... }
+
+closure.class # =&gt; Proc</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/19">
+<pre class="sh_ruby"><code>Proc.instance_methods
+
+# =&gt; [:call, :binding, :yield,
+# =&gt;  :parameters, :lambda?, ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center small" ref="intro_ruby/13_closures/20">
+<h1>Closures can be <strong>passed</strong> around</h1>
+
+<h1>as <strong>parameters</strong> and called <strong>later</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content center small" ref="intro_ruby/13_closures/21">
+<h1>They can refer to <strong>variables</strong> from</h1>
+
+<h1>the <strong>context</strong> (binding) in which</h1>
+
+<h1>they were <strong>created</strong></h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/22">
+<h1>Different ways</h1>
+
+<h1>to create a closure</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/23">
+<pre class="sh_ruby"><code>Proc.new { |params| ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/24">
+<pre class="sh_ruby"><code>Proc.new { |params| ... }
+
+proc { |params| ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/25">
+<pre class="sh_ruby"><code>Proc.new { |params| ... }
+
+proc { |params| ... }
+
+lambda { |params| ... }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/26">
+<pre class="sh_ruby"><code>Proc.new { |params| ... }.class # =&gt; Proc
+
+proc { |params| ... }.class    # =&gt; Proc
+
+lambda { |params| ... }.class  # =&gt; Proc</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/27">
+<h1><strong>Proc.new</strong>/<strong>proc</strong></h1>
+
+<h2><em>Closures with optional parameters</em></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/28">
+<pre class="sh_ruby"><code>closure = proc { |param| param }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/29">
+<pre class="sh_ruby"><code>closure = proc { |param| param }
+
+closure.call</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/30">
+<pre class="sh_ruby"><code>closure = proc { |param| param }
+
+closure.call # =&gt; nil</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/31">
+<h1><strong>lambda</strong></h1>
+
+<h2><em>Closures with required parameters</em></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/32">
+<pre class="sh_ruby"><code>closure = lambda { |param| param }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/33">
+<pre class="sh_ruby"><code>closure = lambda { |param| param }
+
+closure.call</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/34">
+<pre class="sh_ruby"><code>closure = lambda { |param| param }
+
+closure.call
+
+# =&gt; wrong number of arguments (0 for 1)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/35">
+<pre class="sh_ruby"><code>closure = lambda { |param| param }
+
+closure.call 'arg' # =&gt; 'arg'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/36">
+<h1>Converting closures</h1>
+
+<h1>back to blocks</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/37">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/38">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }
+
+(3..5).reduce { |p, n| p * n }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/39">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }
+
+(3..5).reduce { |p, n| p * n }
+
+# =&gt; 60</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/40">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }
+
+(3..5).reduce multiplier</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/41">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }
+
+(3..5).reduce multiplier
+
+# =&gt; wrong number of arguments(1 for 0)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/42">
+<h1>Let's turn it into a <strong>block</strong></h1>
+
+<h1>The <strong>&amp;</strong> to the rescue</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/43">
+<pre class="sh_ruby"><code>multiplier = lambda { |p, n| p * n }
+
+(3..5).reduce &amp;multiplier
+
+# =&gt; 60</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/44">
+<pre class="sh_ruby"><code>(1..9).reduce &amp;multiplier # =&gt; 362880
+
+multiplier.call 'b', 5 # =&gt; 'bbbbb'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/45">
+<pre class="sh_ruby"><code>('a'..'c').collect &amp;:capitalize</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/46">
+<pre class="sh_ruby"><code>('a'..'c').collect &amp;:capitalize
+
+# =&gt; ['A', 'B', 'C']</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/47">
+<pre class="sh_ruby"><code>:capitalize.class # =&gt; Symbol</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/48">
+<pre class="sh_ruby"><code>:capitalize.class # =&gt; Symbol
+
+:capitalize.methods # =&gt; [:to_proc, ...]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/49">
+<h1><strong>&amp;</strong> calls the <em>to_proc</em> method</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/50">
+<pre class="sh_ruby"><code>class Symbol
+
+  def to_proc
+
+    proc { |obj| obj.send self }
+
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/51">
+<pre class="sh_ruby"><code>:capitalize.to_proc</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/52">
+<pre class="sh_ruby"><code>:capitalize.to_proc
+
+{ |obj| obj.send :capitalize }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/53">
+<pre class="sh_ruby"><code>:capitalize.to_proc
+
+{ |obj| obj.send :capitalize }
+
+'ruby'.send :capitalize # =&gt; 'Ruby'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro_ruby/13_closures/54">
+<h1>Working with closures</h1>
+
+<h1>in your own methods</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/55">
+<pre class="sh_ruby"><code>class MySQL
+
+    private
+    def connect
+    end
+
+    def disconnect
+    end
+
+    public
+    def when_connected
+      conn = connect
+      yield conn if block_given?
+      disconnect
+    end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/56">
+<pre class="sh_ruby"><code>class MySQL
+
+    private
+    def connect
+    end
+
+    def disconnect
+    end
+
+    public
+    def when_connected(&amp;closure)
+      conn = connect
+      closure.call conn if closure
+      disconnect
+    end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/57">
+<pre class="sh_ruby"><code>sql = MySQL.new :database =&gt; :my_project</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro_ruby/13_closures/58">
+<pre class="sh_ruby"><code>sql.when_connected do |connection|
+
+  now = connection.query "SELECT NOW();"
+
+  ...
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="thanks/slides/1">
+<h1>That's all, Folks!</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="thanks/slides/2">
+<h1><strong>Thanks!</strong></h1></div>
+</div></div>
+
+</body>
+</html>
